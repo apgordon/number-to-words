@@ -12,8 +12,13 @@ tens = ["", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eight
 
 if digits == 0 
 	puts "Bummer - you didn't enter anything."
-elsif digits == 1 
+elsif digits==1 
 	puts ones[n]
+elsif digits==2 && n!=20
+	x = n.to_s.split("")
+	puts teens[x.last.to_i]
+elsif digits==2 && n==20
+	puts tens[2]
  else
 	puts "I don't know how to process."
 end
