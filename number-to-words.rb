@@ -15,7 +15,7 @@ puts "----"
 ones = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
 teens = ["ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"]
 tens = ["", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"]
-hundreds = ["", "one hundred", "two hundred", "three hundred", "four hundred", "five hundred", "six hundred"]
+hundreds = ["", "one hundred", "two hundred", "three hundred", "four hundred", "five hundred", "six hundred", "seven hundred", "eight hundred", "nine hundred"]
 
 
 if digits_count == 0 
@@ -46,8 +46,21 @@ elsif digits_count == 3 && digits[-1].to_i == 0 && digits[-2].to_i == 0
 elsif digits_count == 3 && digits[1].to_i == 0 && digits[0].to_i != 0
 	puts hundreds[digits[0].to_i] + ' and ' + ones[digits[2].to_i]
 
+#3 digits, between 10 and 19
 elsif digits_count == 3 && digits[-2].to_i == 1
 	puts hundreds[digits[-3].to_i] + ' ' + teens[digits[-1].to_i]
+
+#3 digits, 20
+elsif digits_count == 3 && digits[-2].to_i == 2
+	puts hundreds[digits[-3].to_i] + ' ' + tens[digits[-2].to_i]
+
+#3 digits, multiple of 10
+elsif digits_count == 3 && digits[-1].to_i == 0
+	puts hundreds[digits[-3].to_i] + ' ' + tens[digits[-2].to_i]	
+	
+#3 digits, greater than 120, not multiple of 10
+elsif digits_count == 3 && digits[-2].to_i > 2
+	puts hundreds[digits[-3].to_i] + ' ' + tens[digits[-2].to_i] + '-' + ones[digits[-1].to_i]
 
 else
 	puts "I don't know how to process."
